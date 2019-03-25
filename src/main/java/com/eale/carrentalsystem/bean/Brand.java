@@ -24,7 +24,7 @@ public class Brand {
     @Column(name = "brand_comment")
     private String brandComment;//品牌评价
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "type_id")
     private Type type;//品牌类型
 
