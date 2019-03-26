@@ -55,14 +55,16 @@ public class OrderController {
      * @return
      */
     @RequestMapping(value = "orderEdit",method = RequestMethod.GET)
-    public String orderEdit(@RequestParam(value = "orderId")Long orderId,Model model){
+    public String orderEdit(@RequestParam(value = "orderId",required=false)Long orderId,Model model){
         if (orderId!=null){
             Order order = orderService.findById(orderId);
             model.addAttribute("order",order);
         }
+        List<Vehicle> vehicleList=vehicleService.findAll();
         List<Brand> brandList= brandService.findAll();
         List<Type> typeList=typeService.findAll();
         model.addAttribute("brandList",brandList);
+        model.addAttribute("vehicleList",vehicleList);
         model.addAttribute("typeList",typeList);
         return "retenal/orderEdit";
 
@@ -107,13 +109,13 @@ public class OrderController {
      * @return
      */
     @RequestMapping("myorder")
-    public String seeOrder(@RequestParam(value = "orderId")Long orderId,Model model){
+    public String seeOrder(@RequestParam(value = "orderId",required=false)Long orderId,Model model){
         if (null == orderId){
             return null;
         }
         Order order = orderService.findById(orderId);
         model.addAttribute("order",order);
-        return "retenal/myorder";
+        return "retenal/orderShow";
     }
 
     /**
@@ -123,7 +125,7 @@ public class OrderController {
      * @return
      */
     @RequestMapping("confirmOrder")
-    public String modifyOrder(@RequestParam(value = "orderId")Long orderId,Model model){
+    public String modifyOrder(@RequestParam(value = "orderId",required=false)Long orderId,Model model){
 
         if (null == orderId){
             return null;
@@ -138,7 +140,7 @@ public class OrderController {
 
         Order order1 = orderService.save(order);
         model.addAttribute("order1",order1);
-        return "retenal/myorder";
+        return "retenal/orderShow";
     }
 
     /**
@@ -147,7 +149,8 @@ public class OrderController {
      * @param model
      * @return
      */
-    public String finishOrder(@RequestParam(value = "orderId")Long orderId,Model model){
+    @RequestMapping("finshOrder")
+    public String finishOrder(@RequestParam(value = "orderId",required=false)Long orderId,Model model){
         if (null == orderId){
             return null;
         }
@@ -168,7 +171,7 @@ public class OrderController {
         comment.setCommentState(0);//默认评价状态为 未评价
         commentService.save(comment);
         model.addAttribute("finishorder",finishorder);
-        return "retenal/myorder";
+        return "retenal/orderShow";
     }
 
     /**

@@ -32,11 +32,11 @@ public class CommentController {
      * @param model
      * @return
      */
-    @RequestMapping("commentMange")
+    @RequestMapping("commentManage")
     public String commentManager(Model model){
         List<Comment> commentList = commentService.findAll();
         model.addAttribute("commentList",commentList);
-        return "retenal/commentMange";
+        return "retenal/commentManage";
     }
 
     /**
@@ -46,15 +46,37 @@ public class CommentController {
      * @return
      */
     @RequestMapping(value = "commentEdit",method = RequestMethod.GET)
-    public String commentEdit(@RequestParam(value = "commentId")Long commentId,Model model){
+    public String commentEdit(@RequestParam(value = "commentId",required=false)Long commentId,Model model){
         if (null != commentId){
             Comment comment = commentService.findById(commentId);
             model.addAttribute("comment",comment);
         }
         List<Order> orderList = orderService.findAll();
         model.addAttribute("orderList",orderList);
-        return "commentEdit";
+        return "retenal/commentEdit";
     }
+
+    /**
+     * 查看
+     * @param commentId
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "find",method = RequestMethod.POST)
+    public String findComment(@RequestParam(value = "commentId",required=false)Long commentId,Model model){
+
+        if (commentId == null){
+            return null;
+        }
+        Comment comment = commentService.findById(commentId);
+        if (null == comment){
+            model.addAttribute("errormess","数据有误");
+            return "/commentManage";
+        }
+        model.addAttribute("comment",comment);
+        return "retenal/commentShow";
+    }
+
 
     /**
      * 修改
@@ -80,11 +102,10 @@ public class CommentController {
     /**
      * 删除
      * @param commentId
-     * @param model
      * @return
      */
     @RequestMapping("removeComment")
-    public String remove(@RequestParam(value = "commentId")Long commentId,Model model){
+    public String remove(@RequestParam(value = "commentId",required=false)Long commentId){
         commentService.remove(commentId);
         return "/commentManage";
     }

@@ -1,9 +1,13 @@
 package com.eale.carrentalsystem.service.impl;
 
 import com.eale.carrentalsystem.bean.Brand;
+import com.eale.carrentalsystem.bean.Role;
 import com.eale.carrentalsystem.dao.BrandDao;
 import com.eale.carrentalsystem.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,5 +39,11 @@ public class BrandServiceImpl implements BrandService {
     public Brand modify(Brand brand) {
         brandDao.save(brand);
         return brandDao.findById(brand.getBrandId()).get();
+    }
+
+    @Override
+    public Page<Brand> findAllByPage(int page, int size) {
+        Pageable pageable= PageRequest.of(page,size);
+        return brandDao.findAll(pageable);
     }
 }

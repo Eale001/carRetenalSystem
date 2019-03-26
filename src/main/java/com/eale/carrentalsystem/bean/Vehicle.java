@@ -31,6 +31,9 @@ public class Vehicle {
     @Column(name = "remark")
     private String remark;//车辆备注
 
+    @Column(name = "picture")
+    private String picture;//车辆图片
+
     @OneToOne
     private Brand brand;//车辆品牌
 
@@ -146,6 +149,14 @@ public class Vehicle {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     @Override

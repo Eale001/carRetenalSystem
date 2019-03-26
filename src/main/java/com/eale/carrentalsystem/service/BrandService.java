@@ -1,6 +1,7 @@
 package com.eale.carrentalsystem.service;
 
 import com.eale.carrentalsystem.bean.Brand;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,4 +34,12 @@ public interface BrandService {
      * @return
      */
     Brand modify(Brand brand);
+
+    /**
+     * 分页查询
+     * @param page
+     * @param size
+     * @return
+     */
+    Page<Brand> findAllByPage(int page, int size);
 }

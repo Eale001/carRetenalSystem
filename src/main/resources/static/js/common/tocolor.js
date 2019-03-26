@@ -18,6 +18,26 @@ function toyellow(){
 	$('.red-left').removeClass('red-left').addClass('yellow-left');
 	$('.red-box').removeClass('red-box').addClass('yellow-box');
 }
+function toblack(){
+    /* 绿变黄 */
+    $('.green').removeClass('green').addClass('black');
+    $('.green-g').removeClass('green-g').addClass('black-b');
+    $('.green-none').removeClass('green-none').addClass('black-none');
+    $('.green-left').removeClass('green-left').addClass('black-left');
+    $('.green-box').removeClass('green-box').addClass('black-box');
+    /*蓝变黄  */
+    $('.blue').removeClass('blue').addClass('black');
+    $('.blue-b').removeClass('blue-b').addClass('black-y');
+    $('.blue-none').removeClass('blue-none').addClass('black-none');
+    $('.blue-left').removeClass('blue-left').addClass('black-left');
+    $('.blue-box').removeClass('blue-box').addClass('black-box');
+    /* 红变黄 */
+    $('.red').removeClass('red').addClass('black');
+    $('.red-r').removeClass('red-r').addClass('black-y');
+    $('.red-none').removeClass('red-none').addClass('black-none');
+    $('.red-left').removeClass('red-left').addClass('black-left');
+    $('.red-box').removeClass('red-box').addClass('black-box');
+}
 function toblue(){
 	/* 绿变黄 */
 	$('.green').removeClass('green').addClass('blue');
@@ -60,11 +80,11 @@ function tored(){
 }
 function togreen(){
 	/*蓝变黄  */
-	$('.blue').removeClass('blue').addClass('green');
-	$('.blue-b').removeClass('blue-b').addClass('green-g');
-	$('.blue-none').removeClass('blue-none').addClass('green-none');
-	$('.blue-left').removeClass('blue-left').addClass('green-left');
-	$('.blue-box').removeClass('blue-box').addClass('green-box');
+	$('.blue').removeClass('blue').addClass('black');
+	$('.blue-b').removeClass('blue-b').addClass('black-g');
+	$('.blue-none').removeClass('blue-none').addClass('black-none');
+	$('.blue-left').removeClass('blue-left').addClass('black-left');
+	$('.blue-box').removeClass('blue-box').addClass('black-box');
 	/* 红变黄 */
 	$('.red').removeClass('red').addClass('green');
 	$('.red-r').removeClass('red-r').addClass('green-g');
@@ -77,4 +97,5 @@ function togreen(){
 	$('.yellow-none').removeClass('yellow-none').addClass('green-none');
 	$('.yellow-left').removeClass('yellow-left').addClass('green-left');
 	$('.yellow-box').removeClass('yellow-box').addClass('green-box');
+
 }

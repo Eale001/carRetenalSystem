@@ -34,6 +34,9 @@ public class Order {
     @Column(name = "order_state")
     private Integer state;//订单状态
 
+    @Column(name = "order_remark")
+    private String remark;//订单备注
+
     @OneToOne
     private Type type;//车辆类型
 
@@ -168,6 +171,14 @@ public class Order {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
     @Override

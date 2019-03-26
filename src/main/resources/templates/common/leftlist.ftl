@@ -1,7 +1,7 @@
 <div id="smallDiv"
 	style="width: 3%; background: red; float: left; display: none;">
 	<div style="text-align: center; height: 50px; padding-top: 7px;" class="green-g">
-		<a href="#"><img src="images/logo_1.png" /></a>
+		<a href="#"><img src="#" /></a>
 	</div>
 	<div class="list-left"
 		style="width: 100%; background: rgb(34, 45, 50);">

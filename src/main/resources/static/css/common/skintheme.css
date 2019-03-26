@@ -67,14 +67,17 @@
 }
 
 /* 这里将是绿色主题的内容 */
+/**
+这究竟是为什么  why not?
+ */
 .green{
-	background: #00a65a !important;
+	background: #355044 !important;
 }
 .green-box{
 	border-top: 3px solid #00a65a;
 }
 .green-g{
-	background: #008d4c;
+	background: #355044;
 }
 .green-none:focus,
 .green-none:HOVER,

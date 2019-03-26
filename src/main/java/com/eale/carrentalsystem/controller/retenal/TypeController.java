@@ -32,7 +32,7 @@ public class TypeController {
 
         List<Type> typeList = typeService.findAll();
         model.addAttribute("typelist",typeList);
-        return "retenal/typeManager";
+        return "retenal/typeManage";
 
     }
 
@@ -43,7 +43,7 @@ public class TypeController {
      * @return
      */
     @RequestMapping(value = "typeEdit",method = RequestMethod.GET)
-    public String typeEdit(@RequestParam(value = "typeId") Long typeId,Model model){
+    public String typeEdit(@RequestParam(value = "typeId",required=false) Long typeId,Model model){
         if (typeId!=null){
             Type type= typeService.findById(typeId);
             model.addAttribute("type",type);
@@ -81,7 +81,7 @@ public class TypeController {
      * @return
      */
     @RequestMapping("removeType")
-    public String removeType(@RequestParam(value = "typeId")Long typeId,Model model){
+    public String removeType(@RequestParam(value = "typeId",required=false)Long typeId,Model model){
 
         typeService.remove(typeId);
         model.addAttribute("success",1);
