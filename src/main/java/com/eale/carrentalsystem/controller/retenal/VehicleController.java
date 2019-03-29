@@ -42,7 +42,7 @@ public class VehicleController {
 
         List<Vehicle> vehiclelist=vehicleService.findAll();
         model.addAttribute("vehiclelist",vehiclelist);
-        return "retenal/vehicleManager";
+        return "retenal/vehicleManage";
     }
 
     /**

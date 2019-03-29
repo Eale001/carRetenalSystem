@@ -72,33 +72,21 @@ a:hover {
 								<label class="control-label"><span>地址</span></label> <input
 									name="address" class="form-control" value="${(user.address)!''}"/>
 							</div>
-							<div class="col-md-6 form-group">
-								<label class="control-label"><span>学历</span></label> <input
-									name="userEdu" class="form-control" value="${(user.userEdu)!''}"/>
-							</div>
-							<div class="col-md-6 form-group">
-								<label class="control-label"><span>毕业院校</span></label> <input
-									name="school" class="form-control" value="${(user.school)!''}"/>
-							</div>
+
+
 							<div class="col-md-6 form-group">
 								<label class="control-label"><span>身份证号</span></label> <input
 									name="idCard" class="form-control" value="${(user.idCard)!''}"/>
 							</div>
 							<div class="col-md-6 form-group">
-								<label class="control-label"><span>银行账号</span></label> <input
-									name="bank" class="form-control" value="${(user.bank)!''}"/>
+								<label class="control-label"><span>初始密码</span></label> <input
+									name="password" class="form-control" value="${(user.password)!''}"/>
 							</div>
-							<div class="col-md-6 form-group">
-								<label class="control-label"> <span>部门</span></label> 
-								<select class="deptselect form-control" name="deptid">
-									<#if user??>
-										<option value="${(user.dept.deptId)!''}">${user.dept.deptName}</option>
-									</#if>
-									<#list depts as dept>
-										<option value="${dept.deptId}">${dept.deptName}</option>
-									</#list>
-								</select>
-							</div>
+                            <div class="col-md-6 form-group">
+                                <label class="control-label"><span>银行账号</span></label> <input
+                                    name="bank" class="form-control" value="${(user.bank)!''}"/>
+                            </div>
+
 							<div class="col-md-6 form-group">
 								<label class="control-label"> <span>性别</span>
 								</label> <select class="form-control" name="sex" value="${(user.sex)!''}">
@@ -106,17 +94,7 @@ a:hover {
 									<option value="女">女</option>
 								</select>
 							</div>
-							<div class="col-md-6 form-group">
-								<label class="control-label"> <span>职位</span></label> 
-								<select class="positionselect form-control" name="positionid">
-									<#if user??>
-										<option value="${(user.position.id)!''}">${user.position.name}</option>
-									</#if>
-									<#list positions as position>
-										<option value="${position.id}">${position.name}</option>
-									</#list>
-								</select>
-							</div>
+
 							<div class="col-md-6 form-group">
 								<label class="control-label"> <span>角色</span>
 								</label> <select class="form-control" name="roleid">
@@ -146,15 +124,7 @@ a:hover {
 								<label class="control-label">生日</label> <input
 									name="birth" class="form-control" id="start" onclick="WdatePicker()" value="${(user.birth)!''}"/>
 							</div> -->
-							<div class="col-md-6 form-group">
-								<label class="control-label"> <span>皮肤</span>
-								</label> <select class="form-control" name="themeSkin" value="${(user.themeSkin)!''}">
-									<option value="blue">经典蓝</option>
-									<option value="green">原谅绿</option>
-									<option value="red">姨妈红</option>
-									<option value="yellow">shit黄</option>
-								</select>
-							</div>
+
 							<input type="hidden" name="userId" value="${(user.userId)!''}"/>
 						</div>
 	
@@ -315,7 +285,7 @@ function check() {
  		 			return false;
 				}
 			}
-			if(index == 7){
+			/**if(index == 7){
 				var $idcard = $(this).val();
 				
 				if(isCardNo($idcard) == false){
@@ -333,7 +303,7 @@ function check() {
  					isRight = 0;
  		 			return false;
  				}
-			}
+			}**/
 			// 在这个里面进行其他的判断；不为空的错误信息提醒
 			return true;
 		}
@@ -356,7 +326,7 @@ function isPhoneNo(phone) {
  
 // 验证身份证 
 function isCardNo(card) { 
- // var pattern = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+ var pattern = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/; 
  return pattern.test(card); 
 } 
 //验证邮箱

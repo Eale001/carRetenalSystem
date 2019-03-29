@@ -31,7 +31,7 @@ public class TypeController {
     public String typeManage(Model model){
 
         List<Type> typeList = typeService.findAll();
-        model.addAttribute("typelist",typeList);
+        model.addAttribute("typeList",typeList);
         return "retenal/typeManage";
 
     }

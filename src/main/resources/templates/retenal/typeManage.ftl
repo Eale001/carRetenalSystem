@@ -78,14 +78,14 @@
                             <th scope="col">车类型简介</th>
                             <th scope="col">操作</th>
                         </tr>
-						<#list typelist as item>
+						<#list typeList as type>
 						<tr>
-                            <td><span>${item.typeName}</span></td>
-                            <td><span>${item.typeRemark}</span></td>
+                            <td><span>${type.typeName}</span></td>
+                            <td><span>${type.typeRemark}</span></td>
                             <td>
-                                <a href="/typeEdit?typeId=${item.typeId}" class="label xiugai">
+                                <a href="/typeEdit?typeId=${type.typeId}" class="label xiugai">
                                     <span class="glyphicon glyphicon-edit"></span> 修改</a>
-                                <a href="/removeType?typeId=${item.typeId}" onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};"
+                                <a href="/removeType?typeId=${type.typeId}" onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};"
                                    class="label shanchu"><span
                                         class="glyphicon glyphicon-remove"></span> 删除</a></td>
                         </tr>

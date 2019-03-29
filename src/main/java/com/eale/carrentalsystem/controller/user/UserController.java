@@ -97,6 +97,7 @@ public class UserController {
 		if(user.getUserId()==null){
 			user.setPassword("123456");
 			user.setRole(role);
+			user.setIsLock(0);
 			userService.save(user);
 		}else{
 			User user2 = userService.findById(user.getUserId());
