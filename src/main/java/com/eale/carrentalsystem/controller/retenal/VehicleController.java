@@ -42,7 +42,7 @@ public class VehicleController {
 
         List<Vehicle> vehiclelist=vehicleService.findAll();
         model.addAttribute("vehiclelist",vehiclelist);
-        return "retenal/vehicleManager";
+        return "retenal/vehicleManage";
     }
 
     /**
@@ -52,7 +52,7 @@ public class VehicleController {
      * @return
      */
     @RequestMapping(value = "vehicleEdit",method = RequestMethod.GET)
-    public String vehicleEdit(@RequestParam(value = "vehicleId")Long vehicleId,Model model){
+    public String vehicleEdit(@RequestParam(value = "vehicleId",required=false)Long vehicleId,Model model){
 
         if (vehicleId != null){
 
@@ -99,7 +99,7 @@ public class VehicleController {
      * @return
      */
     @RequestMapping("removeVehicle")
-    public String removeVehicle(@RequestParam(value = "vehicleId")Long vehicleId,Model model){
+    public String removeVehicle(@RequestParam(value = "vehicleId",required=false)Long vehicleId,Model model){
         vehicleService.remove(vehicleId);
         model.addAttribute("seccess",1);
         return "/vehicleManage";
@@ -112,14 +112,14 @@ public class VehicleController {
      * @return
      */
     @RequestMapping("findById")
-    public String findById(@RequestParam(value = "vehicleId")Long vehicleId,Model model){
+    public String findById(@RequestParam(value = "vehicleId",required=false)Long vehicleId,Model model){
         if (vehicleId==null){
             model.addAttribute("errormess","数据出错");
             return "/vheicleManage";
         }
         Vehicle vehicle=vehicleService.findById(vehicleId);
         model.addAttribute("vehicle",vehicle);
-        return "retenal/myVehicle";
+        return "retenal/vehicleShow";
     }
 
     /**
@@ -131,7 +131,7 @@ public class VehicleController {
     @RequestMapping("findByConditions")
     public String findByConditions(Vehicle vehicle,Model model){
         List<Vehicle> vehicleList = vehicleService.findByConditons(vehicle);
-        model.addAttribute("vehicleList",vehicleList);
+        model.addAttribute("vehicleListconditions",vehicleList);
         return "retenal/vehicleManage";
     }
 

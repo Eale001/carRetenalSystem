@@ -3,11 +3,13 @@ package com.eale.carrentalsystem.controller.retenal;
 import com.eale.carrentalsystem.bean.Brand;
 import com.eale.carrentalsystem.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -24,14 +26,21 @@ public class BrandController {
 
     /**
      * 第一次进入管理页面
-     * @param model
+     * @param
      * @return
      */
     @RequestMapping("brandManage")
-    public String brandManage(Model model){
-        List<Brand> brandlist=brandService.findAll();
-        model.addAttribute("brandlist",brandlist);
-        return "retenal/brandManage";
+    public ModelAndView brandManage(@RequestParam(value = "page", defaultValue = "0") int page,
+                              @RequestParam(value = "size", defaultValue = "10") int size){
+        ModelAndView mav=new ModelAndView("retenal/brandManage");
+
+        Page<Brand> pagebrand=brandService.findAllByPage(page,size);
+
+        List<Brand>  brandlist=pagebrand.getContent();
+        mav.addObject("page", pagebrand);
+        mav.addObject("brandlist", brandlist);
+//        mav.addObject("url", "roleser");
+        return mav;
     }
 
     /**
@@ -41,7 +50,7 @@ public class BrandController {
      * @return
      */
     @RequestMapping(value = "brandEdit",method = RequestMethod.GET)
-    public String brandEdit(@RequestParam(value = "brandId") Long brandId,Model model){
+    public String brandEdit(@RequestParam(value = "brandId",required=false) Long brandId,Model model){
         if (null != brandId){
             Brand brand=brandService.findById(brandId);
             model.addAttribute("brand",brand);
@@ -79,7 +88,7 @@ public class BrandController {
      * @return
      */
     @RequestMapping("removeBrand")
-    public String removeBrand(@RequestParam(value = "brandId") Long brandId,Model model){
+    public String removeBrand(@RequestParam(value = "brandId",required=false) Long brandId,Model model){
         brandService.remove(brandId);
         model.addAttribute("success","删除成功!");
         return "/brandManage";

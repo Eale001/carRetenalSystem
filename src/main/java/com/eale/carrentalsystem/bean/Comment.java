@@ -25,6 +25,9 @@ public class Comment {
     @Column(name = "satisfaction")
     private Integer satisfaction;//好评程度
 
+    @Column(name = "state")
+    private Integer commentState;//评价状态
+
     @Column(name = "create_user")
     private String createUser;//创建人
 
@@ -94,6 +97,14 @@ public class Comment {
 
     public void setUpdateUser(String updateUser) {
         this.updateUser = updateUser;
+    }
+
+    public Integer getCommentState() {
+        return commentState;
+    }
+
+    public void setCommentState(Integer commentState) {
+        this.commentState = commentState;
     }
 
     public Date getUpdateTime() {

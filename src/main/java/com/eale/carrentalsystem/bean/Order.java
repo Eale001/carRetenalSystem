@@ -14,7 +14,7 @@ public class Order {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="vehicle_id")
-    private Long vehicleId;//订单Id
+    private Long orderId;//订单Id
 
     @OneToOne
     private Vehicle vehicle;//订单车辆
@@ -34,8 +34,14 @@ public class Order {
     @Column(name = "order_state")
     private Integer state;//订单状态
 
+    @Column(name = "order_remark")
+    private String remark;//订单备注
+
     @OneToOne
     private Type type;//车辆类型
+
+    @OneToOne
+    private Brand brand;//车辆品牌
 
     @Column(name = "isComment")
     private Integer isComment;//评论状态
@@ -55,6 +61,14 @@ public class Order {
     public Order() {
     }
 
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+
     public User getUser() {
         return user;
     }
@@ -71,12 +85,12 @@ public class Order {
         this.isComment = isComment;
     }
 
-    public Long getVehicleId() {
-        return vehicleId;
+    public Long getOrderId() {
+        return orderId;
     }
 
-    public void setVehicleId(Long vehicleId) {
-        this.vehicleId = vehicleId;
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 
     public Vehicle getVehicle() {
@@ -159,10 +173,18 @@ public class Order {
         this.updateTime = updateTime;
     }
 
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
-                "vehicleId=" + vehicleId +
+                "vehicleId=" + orderId +
                 ", vehicle=" + vehicle +
                 ", beginTime=" + beginTime +
                 ", endTime=" + endTime +
