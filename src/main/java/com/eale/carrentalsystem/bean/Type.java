@@ -1,6 +1,7 @@
 package com.eale.carrentalsystem.bean;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -9,7 +10,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "car_rental_type")
-public class Type {
+public class Type implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
