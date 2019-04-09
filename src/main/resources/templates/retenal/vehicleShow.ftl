@@ -11,16 +11,16 @@
 	<table class="table" border=""  style="width: 90%;margin: auto;margin-bottom: 20px;">
 		<tr>
 			<td class="text-right"  >车辆名:</td>
-			<td >	${vehicle.vehicleName}</td>
+			<td >	${(vehicle.vehicleName)!''}</td>
 			<td rowspan="3" colspan="2">
 				<div id="">
-					<img src="image/${(vehicle.picture)!'timg.jpg'}" style="width: 120px;height: 120px;border-radius: 50%;margin-left: 15%;"/>
+					<img src="images/${(vehicle.picture)!'car.jpg'}" style="width: 120px;height: 120px;border-radius: 50%;margin-left: 15%;"/>
 				</div>
 			</td>
 		</tr>
 		<tr>
 			<td class="text-right" >车辆品牌:</td>
-			<td>	${vehicle.brand.brandName}</td>
+			<td>	${(vehicle.brand.brandName)!''}</td>
 		</tr>
 		<tr>
 			<td class="text-right" >车辆类型:</td>
@@ -34,7 +34,7 @@
 		</tr>
 		<tr>
 			<td class="text-right" >车辆状态:</td>
-			<td>${vehicle.vehicleState}</td>
+			<td>${(vehicle.vehicleState)!'空闲'}</td>
 			<td class="text-right">车辆备注:</td>
 			<td class="text-left">${(vehicle.remark)!'空的'}</td>
 		</tr>

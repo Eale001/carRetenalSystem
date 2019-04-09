@@ -58,32 +58,32 @@
                      style="margin-left: 20px; margin-right: 20px;">
                     <div class=" mailbox-read-info">
                         <h3>
-                            <span id="ctl00_cphMain_lblTitle">订单ID：${order.orderId}</span>
+                            <span id="ctl00_cphMain_lblTitle">订单ID：${(order.orderId)!''}</span>
                         </h3>
                         <h5 class="fonts">
 
                             <span id="ctl00_cphMain_lblFrom"
-                                  class="mailbox-read-time">下单用户：<i>${order.user.userName}</span>
+                                  class="mailbox-read-time">下单用户：<i>${(order.user.userName)!''}</span>
 
                             <span id="ctl00_cphMain_lblDate"
-                                  class="mailbox-read-time pull-right">${order.createTime}</span>
+                                  class="mailbox-read-time pull-right">${(order.createTime)!''}</span>
                         </h5>
                     </div>
                     <div class="mailbox-read-message">
-                        <span id="ctl00_cphMain_lblDescription">订单车辆：${order.vehicle.vehicleName}</span>
+                        <span id="ctl00_cphMain_lblDescription">订单车辆：${(order.vehicle.vehicleName)!''}</span>
                         <span id="ctl00_cphMain_lblFeedback">
 								<h5 style="margin-top: 20px;">
-									时间长度（${order.beginTime}至 ${order.endTime}）
+									时间长度（${(order.beginTime)!''}至 ${(order.endTime)!''}）
 									<small class="pull-right"></small>
 								</h5>
 								<div class="progress xs" style="margin: 10px 0;">
 									<div class="progress-bar progress-bar-aqua"
-                                         style="width:${status.statusPrecent}" role="progressbar"
+                                         style="width:${(status.statusPrecent)!''}" role="progressbar"
                                          aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
 									</div>
 								</div>
                                 <div>
-                                    状态为【${order.state}】
+                                    状态为【${(order.state)!''}】
                                 </div>
 
 							<#--<#list loggerlist as logger>-->

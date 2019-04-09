@@ -129,15 +129,18 @@
 				<#--</#if>-->
 				<#--</span></td>-->
 				<td><span>${(vehicle.vehicleSeat)!''}</span></td>
-				<td><span>${    (vehicle.vehiclePrice)!''}</span></td>
+				<td><span>${(vehicle.vehiclePrice)!''}</span></td>
+				<#--<td><span>-->
+                    <#--<img src="image/${(vehicle.picture)!'car.jpg'}" style="width: 120px;height: 120px;border-radius: 50%;margin-left: 15%;"/>-->
+                <#--</span></td>-->
 				<td><span>${(vehicle.vehicleState)!''}</span></td>
 				<td><span>${(vehicle.remark)!''}</span></td>
 
-                <td><a href="#"> <img src="image/${(vehicle.picture)!'timg.jpg'}" class="img-circle"
+                <td><a href="#"> <img src="images/${(vehicle.picture)!'car.jpg'}" class="img-circle"
                                       style="width: 24px; height: 24px;">
                 </a></td>
 				<td>
-					<a href="/findById" userId="${vehicle.vehicleId}" class="label xiugai inlookthis">
+					<a href="/findById?vehicleId=${vehicle.vehicleId}" class="label xiugai inlookthis">
 						<span class="glyphicon glyphicon-search"></span> 查看
 					</a>
                     <a href="/vehicleEdit?vehicleId=${vehicle.vehicleId}" class="label xiugai">
