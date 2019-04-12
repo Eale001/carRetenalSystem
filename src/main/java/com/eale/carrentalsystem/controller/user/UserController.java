@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
@@ -79,6 +80,22 @@ public class UserController {
 			model.addAttribute("user",user);
 		}
 		
+
+		List<Role> roles = roleService.findAll();
+
+		model.addAttribute("roles", roles);
+		return "user/edituser";
+	}
+
+	@RequestMapping(value="usergetInfo",method = RequestMethod.GET)
+	public String usergetInfo(HttpSession session,Model model) {
+		Long userid =(Long) session.getAttribute("userId");
+		if(userid!=null){
+			User user = userService.findById(userid);
+			model.addAttribute("where","xg");
+			model.addAttribute("user",user);
+		}
+
 
 		List<Role> roles = roleService.findAll();
 
