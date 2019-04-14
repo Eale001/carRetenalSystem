@@ -23,7 +23,10 @@ import java.util.List;
 @Controller
 @RequestMapping("/")
 public class UserController {
-	
+
+	public static final String CAPTCHA_KEY = "session_captcha";
+
+
 	@Autowired
 	private UserService userService;
 
@@ -160,6 +163,7 @@ public class UserController {
 		}
 		return false;
     }
+
 
 
 }

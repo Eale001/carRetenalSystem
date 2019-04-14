@@ -1,5 +1,6 @@
 package com.eale.carrentalsystem.controller.login;
 
+import com.eale.carrentalsystem.bean.Role;
 import com.eale.carrentalsystem.bean.User;
 import com.eale.carrentalsystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,15 @@ public class LoginsController {
 	@RequestMapping(value="logins",method= RequestMethod.GET)
 	public String login(){
 		return "login/login";
+	}
+
+	/**
+	 * 注册界面的显示
+	 * @return
+	 */
+	@RequestMapping(value = "goRegister",method = RequestMethod.GET)
+	public String goRegister(){
+		return "login/register";
 	}
 	
 	@RequestMapping("loginout")
@@ -120,6 +130,49 @@ public class LoginsController {
 
 		// 将验证码存储在session以便登录时校验
 		session.setAttribute(CAPTCHA_KEY, verifyCode.toLowerCase());
+	}
+
+
+
+	/**
+	 * 注册
+	 * @param req
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "register",method = RequestMethod.POST)
+	public String register(HttpServletRequest req, Model model){
+		String userName=req.getParameter("userName").trim();
+		String password=req.getParameter("password");
+		String userTel=req.getParameter("userTel");
+		String ca=req.getParameter("code").toLowerCase();
+		String sesionCode = (String) req.getSession().getAttribute(CAPTCHA_KEY);
+		model.addAttribute("userName", userName);
+		if(!ca.equals(sesionCode.toLowerCase())){
+			model.addAttribute("errormess", "验证码输入错误!");
+			req.setAttribute("errormess","验证码输入错误!");
+			return "login/register";
+		}
+		/*
+		 * 将用户名分开查找；用户名或者电话号码；
+		 * */
+		User user = userService.findByUserName(userName);
+//		System.out.println(user.getIsLock());
+		if(Objects.isNull(user)){
+			user =new User();
+			user.setIsLock(0);
+			user.setUserTel(userTel);
+			user.setPassword(password);
+			user.setUserName(userName);
+			Role role =new Role();
+			role.setRoleId((long)2);
+			user.setRole(role);
+			userService.save(user);
+			return "login/login";
+
+		}
+		model.addAttribute("errormess", "该账户已存在!");
+		return "login/register";
 	}
 	
 

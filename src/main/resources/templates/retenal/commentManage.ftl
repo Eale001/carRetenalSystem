@@ -94,7 +94,9 @@
                             <td><span>${item.comment}</span></td>
                             <td><span>${item.commentState}</span></td>
                             <td>
-                                <a href="/modifyComment?commentId=${item.commentId}" class="label xiugai">
+                                <a href="/find?commentId=${item.commentId}" class="label xiugai">
+                                    <span class="glyphicon glyphicon-edit"></span> 查看</a>
+                                <a href="/find?commentId=${item.commentId}" class="label xiugai">
                                     <span class="glyphicon glyphicon-edit"></span> 修改</a>
                                 <a href="/removeComment?commentId=${item.commentId}" onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};"
                                    class="label shanchu"><span
@@ -113,15 +115,15 @@
 <script>
     $(function () {
 
-        $('.baseKetsubmit').on('click', function () {
-            var baseKey = $('.baseKey').val();
-            $('.thistable').load('${url}?baseKey=baseKey');
-        });
+        <#--$('.baseKetsubmit').on('click', function () {-->
+            <#--var baseKey = $('.baseKey').val();-->
+            <#--$('.thistable').load('${url}?baseKey=baseKey');-->
+        <#--});-->
 
-        $(".chazhao").click(function () {
-            var con = $(".cha").val();
-            $(".thistable").load("roleser", {val: con});
-        });
+        <#--$(".chazhao").click(function () {-->
+            <#--var con = $(".cha").val();-->
+            <#--$(".thistable").load("roleser", {val: con});-->
+        <#--});-->
 
     });
 </script>

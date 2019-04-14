@@ -53,14 +53,19 @@
                                 <label>
                                     <span id="ctl00_cphMain_Label1">订单ID</span>
                                 </label>
-                                <input name="order.orderId" type="text" value="${(comment.order.orderId)!''}" class="form-control"/>
+                                <#--<input name="order.orderId" type="text" value="${(comment.order.orderId)!''}" class="form-control"/>-->
+                                <select class="form-control" name="orderId">
+							        <#list orderList as order>
+                                        <option value="${(order.orderId)!''}">${(order.orderId)!''}</option>
+                                    </#list>
+                                </select>
                                 <input name="commentId" type="text" value="${(comment.commentId)!''}" hidden="hidden"/>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>
                                     <span id="ctl00_cphMain_Label1">订单车辆</span>
                                 </label>
-                                <input name="order.vehicle.vehicleName" type="text" value="${(comment.order.vehicle.vehicleName)!''}" class="form-control"/>
+                                <input name="vehicleId" type="text" value="${(comment.order.vehicle.vehicleName)!''}" class="form-control"/>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>

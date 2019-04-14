@@ -76,22 +76,29 @@ public class OrderController {
      * @return
      */
     @RequestMapping(value = "saveOrder",method = RequestMethod.POST)
-    public String saveOrder(Order order,Model model){
+    public String saveOrder(Order order,String vehicleName,String typeId,String brandId,Model model){
         System.out.println(order);
+        System.out.println(vehicleName);
+        System.out.println(typeId);
+        System.out.println(brandId);
         if (null == order){
             model.addAttribute("errorr","请输入有效数据");
             return "/orderEdit";
         }
         order.setState(0);//默认为 为接单状态
+        Brand brand=brandService.findById(Long.parseLong(brandId));
+        Type type=typeService.findById(Long.parseLong(typeId));
         Vehicle vehicle=new Vehicle();
-        vehicle.setBrand(order.getBrand());
-        vehicle.setType(order.getType());
+        vehicle.setBrand(brand);
+        vehicle.setType(type);
         List<Vehicle> vehicleList=vehicleService.findByConditons(vehicle);
         if (vehicleList.size()<1){
             model.addAttribute("errormess","该类型车辆没有了");
             return "/orderEdit";
         }
         order.setVehicle(vehicleList.get(0));
+        order.setBrand(brand);
+        order.setType(type);
         Order newOrder = orderService.save(order);
         if (null == newOrder){
             model.addAttribute("errormess","数据保存失败");

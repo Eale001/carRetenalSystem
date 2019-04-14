@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
+Source Server         : local
 Source Server Version : 50540
 Source Host           : localhost:3306
 Source Database       : car_retenal_sys
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2019-04-08 20:14:36
+Date: 2019-04-12 23:45:02
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -76,7 +76,7 @@ CREATE TABLE `car_rental_menu` (
   `is_show` bit(1) DEFAULT NULL,
   `sort_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`menu_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of car_rental_menu
@@ -110,6 +110,7 @@ INSERT INTO `car_rental_menu` VALUES ('26', null, 'glyphicon-comment', '权限�
 INSERT INTO `car_rental_menu` VALUES ('27', null, 'glyphicon-comment', '', '##', '7', '\0', '1');
 INSERT INTO `car_rental_menu` VALUES ('28', null, 'glyphicon-comment', '', '##', '7', '\0', '2');
 INSERT INTO `car_rental_menu` VALUES ('29', null, 'glyphicon-comment', '', '##', '7', '\0', '3');
+INSERT INTO `car_rental_menu` VALUES ('30', null, 'glyphicon-comment', '个人信息', 'usergetInfo', '9', '', '3');
 
 -- ----------------------------
 -- Table structure for car_rental_order
@@ -136,14 +137,15 @@ CREATE TABLE `car_rental_order` (
   KEY `FK7akyheos95e9vidn4w1ygnaby` (`type_type_id`),
   KEY `FKj5b6aqm30ct5w1ve4woqmuomr` (`user_user_id`),
   KEY `FKl92opfbprofvrbqi44jwwmpy4` (`vehicle_vehicle_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of car_rental_order
 -- ----------------------------
 INSERT INTO `car_rental_order` VALUES ('1', '2019-04-08 12:09:14', null, null, '2019-04-09 12:09:20', '1', '12', '1', '2019-04-08 12:09:05', null, '1', '1', '1', '1', '额');
 INSERT INTO `car_rental_order` VALUES ('2', '2019-04-08 19:58:18', null, null, '2019-04-09 19:58:18', null, '360', '0', null, null, null, null, null, '1', '');
-INSERT INTO `car_rental_order` VALUES ('3', '2019-04-08 19:58:18', null, null, '2019-04-09 19:58:18', null, '360', '0', null, null, null, null, null, '1', '么的');
+INSERT INTO `car_rental_order` VALUES ('3', '2019-04-08 19:58:18', null, null, '2019-04-09 19:58:18', null, '360', '2', null, null, null, null, null, '1', '么的');
+INSERT INTO `car_rental_order` VALUES ('4', '2019-04-08 12:09:14', null, null, '2019-04-09 12:09:20', null, '12', '0', null, null, '1', '1', null, '1', '额');
 
 -- ----------------------------
 -- Table structure for car_rental_role
@@ -176,7 +178,7 @@ CREATE TABLE `car_rental_role_power_list` (
   PRIMARY KEY (`pk_id`),
   KEY `FK7y6bwdog5jktlque3b22qbefo` (`menu_id`),
   KEY `FKfanlsm2y3u3slfbs2s3vlk4by` (`role_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of car_rental_role_power_list
@@ -210,6 +212,15 @@ INSERT INTO `car_rental_role_power_list` VALUES ('26', '', '26', '1');
 INSERT INTO `car_rental_role_power_list` VALUES ('27', '', '27', '1');
 INSERT INTO `car_rental_role_power_list` VALUES ('28', '', '28', '1');
 INSERT INTO `car_rental_role_power_list` VALUES ('29', '', '29', '1');
+INSERT INTO `car_rental_role_power_list` VALUES ('30', '', '30', '1');
+INSERT INTO `car_rental_role_power_list` VALUES ('31', '', '4', '2');
+INSERT INTO `car_rental_role_power_list` VALUES ('32', '', '5', '2');
+INSERT INTO `car_rental_role_power_list` VALUES ('33', '', '9', '2');
+INSERT INTO `car_rental_role_power_list` VALUES ('34', '', '18', '2');
+INSERT INTO `car_rental_role_power_list` VALUES ('35', '', '19', '2');
+INSERT INTO `car_rental_role_power_list` VALUES ('36', '', '16', '2');
+INSERT INTO `car_rental_role_power_list` VALUES ('37', '', '17', '2');
+INSERT INTO `car_rental_role_power_list` VALUES ('39', '', '30', '2');
 
 -- ----------------------------
 -- Table structure for car_rental_type
@@ -261,12 +272,13 @@ CREATE TABLE `car_rental_user` (
   `role_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   KEY `FKjuly231olwim444vu8buprf14` (`role_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of car_rental_user
 -- ----------------------------
-INSERT INTO `car_rental_user` VALUES ('1', null, null, null, null, null, null, null, null, '0', '2019-03-26 17:09:37', null, '123456', null, null, null, null, null, 'admin', null, '1');
+INSERT INTO `car_rental_user` VALUES ('1', '四川成都', '121212121212', null, '123@qq.com', null, null, null, null, '0', '2019-03-26 17:09:37', null, '123456', '张三', '1500', '男', null, null, 'admin', '15011001221', '1');
+INSERT INTO `car_rental_user` VALUES ('2', '山西大同', '131313221144', null, '123@qq.com', null, null, null, null, '0', '2019-04-12 23:23:53', null, '123456', '李四', '2000', '男', null, null, 'customer', '13011213311', '2');
 
 -- ----------------------------
 -- Table structure for car_rental_vehicle
@@ -289,7 +301,7 @@ CREATE TABLE `car_rental_vehicle` (
   PRIMARY KEY (`vehicle_id`),
   KEY `FK4yl4d1xkk4tl40o2wo33b1m8s` (`brand_brand_id`),
   KEY `FKvmkdp43034br0odcia3eal99` (`type_type_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of car_rental_vehicle
@@ -298,6 +310,7 @@ INSERT INTO `car_rental_vehicle` VALUES ('1', null, null, '好用的很', null, 
 INSERT INTO `car_rental_vehicle` VALUES ('2', null, null, '也好用的很', null, null, '宝马拉风', '100', '5', '1', '2', '1', null);
 INSERT INTO `car_rental_vehicle` VALUES ('3', null, null, '还是很好用的呢', null, null, '阿迪三号', '120', '5', '1', '1', '1', null);
 INSERT INTO `car_rental_vehicle` VALUES ('4', null, null, '好的很', null, null, '宝马二号', '80', '7', '0', null, null, null);
+INSERT INTO `car_rental_vehicle` VALUES ('5', null, null, '好用的很哟', null, null, '宝马三系', '130', '5', '0', null, null, null);
 
 -- ----------------------------
 -- Table structure for car_retenal_status_list

@@ -111,13 +111,14 @@
     <div class="cont_login">
       <div class="cont_forms cont_forms_active_login" style="height: 480px;width: 400px;border-radius: 15px;">
         <div class="cont_img_back_"> <img src="images/car.jpg" alt="背景图片" /> </div>
-        <form action="logins" method="post" onsubmit="return check();">
+        <form action="/register" method="post" onsubmit="return check();">
         <div class="cont_form_login" style="display: block;opacity: 1;width: 400px;">
         	 <div class="alert alert-danger alert-dismissible"  role="alert" style="position: absolute;padding: 11px;display: none">
 	          	错误信息: <span class="error-mess"></span>
 	          	<button type="button" class="close" data-dismiss="alert" aria-label="Close" style="right:0px;"><span aria-hidden="true">&times;</span></button>
 	          </div>
-          <h2>LOGIN</h2>
+          <h2>REGISTER</h2>
+          <input type="text" placeholder="UserName/TeL" autofocus="autofocus" value="${(userTel)!''}" name="userName" class="userName test"/>
           <input type="text" placeholder="UserName/TeL" autofocus="autofocus" value="${(userName)!''}" name="userName" class="userName test"/>
           <input type="password" placeholder="Password" value="" name="password" class="password test"/>
            <input type="text" placeholder="Code" style="margin-bottom: 20px;width:152px" name="code" class="code test"/>
@@ -125,9 +126,8 @@
 					<img class="thisimg" onclick="this.src='captcha?r'+Date.now()" src="captcha" alt="验证码" style="width: 100px;height: 42px;border-radius: 3px;">
 				</div>
 		    <br>
-       <button class="btn_login btn" type="submit" >LOGIN</button>
-            <a href="/goRegister" style="margin: 31px;font-size: 16px;">
-                <span class="glyphicon glyphicon-edit"></span> REGISTER</a>
+       <button class="btn_login btn" type="submit" >REGISTER</button>
+
         </div>
         </form>
       </div>
@@ -165,11 +165,6 @@
 <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 <#if hasmess??>
 <script type="text/javascript">
-	$("#register").onclick(function (){
-	    alert(1)
-	} {
-
-    })
 	$(function(){
 		$('#mymodal').modal('show');
 	})

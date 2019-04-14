@@ -76,10 +76,17 @@ public class VehicleController {
      * @return
      */
     @RequestMapping(value = "vehicleEdit",method = RequestMethod.POST)
-    public String vehivleEdit(Vehicle vehicle,Model model){
+    public String vehivleEdit(Vehicle vehicle,String brandId,String typeId,Model model){
 
         System.out.println(vehicle);
+        System.out.println(brandId);
+        System.out.println(typeId);
 
+        Brand brand=brandService.findById(Long.parseLong(brandId));
+        Type type=typeService.findById(Long.parseLong(typeId));
+
+        vehicle.setBrand(brand);
+        vehicle.setType(type);
         Vehicle modifyVehicle=vehicleService.modify(vehicle);
 
         if (null==modifyVehicle){

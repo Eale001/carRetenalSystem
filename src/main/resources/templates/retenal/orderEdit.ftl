@@ -69,7 +69,7 @@ a:hover {
                         <#--</div>-->
 								<div class="col-md-6 form-group">
                                     <label class="control-label"> <span>订单车辆</span></label>
-                                    <select class="form-control" name="brandId">
+                                    <select class="form-control" name="vehicleName">
 									<#list vehicleList as vehicle>
 										<option value="${(vehicle.vehicleName)!''}">${(vehicle.vehicleName)!''}</option>
 									</#list>
@@ -89,9 +89,9 @@ a:hover {
                         </div>
                         <div class="col-md-6 form-group">
                             <label class="control-label"> <span>品牌</span></label>
-                            <select class="form-control" name="typeId">
+                            <select class="form-control" name="brandId">
 							<#list brandList as brand>
-								<option value="${(brand.brandName)!''}">${(brand.brandName)!''}</option>
+								<option value="${(brand.brandId)!''}">${(brand.brandName)!''}</option>
 							</#list>
                             </select>
                         </div>
@@ -109,18 +109,18 @@ a:hover {
 							<label class="control-label">订单状态</label>
 							<select class="form-control" name="state">
 								<option value="${(order.state)!''}"></option>
-								<#--<#if (order.state)!'' ==0>-->
-								<#--<#else>-->
-								<#--<option value="0">未接单</option>-->
-								<#--</#if>-->
-								<#--<#if (order.state)!'' ==1>-->
-								<#--<#else>-->
-								<#--<option value="1">进行中</option>-->
-								<#--</#if>-->
-								<#--<#if (order.state)!'' ==2>-->
-								<#--<#else>-->
-								<#--<option value="2">已完成</option>-->
-								<#--</#if>-->
+								<#if order.state ==0>
+								<#else>
+								<option value="0">未接单</option>
+								</#if>
+								<#if order.state ==1>
+								<#else>
+								<option value="1">进行中</option>
+								</#if>
+								<#if order.state ==2>
+								<#else>
+								<option value="2">已完成</option>
+								</#if>
 							</select>
 						</div>
 

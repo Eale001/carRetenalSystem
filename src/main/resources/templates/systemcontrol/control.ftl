@@ -72,25 +72,27 @@
 	</ol>
 </div>
 <!--四个面板-->
-<div class="container-fluid">
-	<div class="row">
-	</div>
-</div>
-<!--右侧刷新的内容块-->
-<div class="container-fluid"
-	style="margin-top: 20px;  margin-bottom: 50px;">
-	<div class="row ">
-		<div class="col-md-7 gridly">
-		<!-- 统计 -->
-		</div>
+<#include "/retenal/vehicleManager.ftl">
+<#--<div class="container-fluid">-->
+	<#--<div class="row">-->
 
-		<!--内容右侧5个格子；-->
-		<div class="rightcolmd">
+	<#--</div>-->
+<#--</div>-->
+<#--<!--右侧刷新的内容块&ndash;&gt;-->
+<#--<div class="container-fluid"-->
+	<#--style="margin-top: 20px;  margin-bottom: 50px;">-->
+	<#--<div class="row ">-->
+		<#--<div class="col-md-7 gridly">-->
+		<#--<!-- 统计 &ndash;&gt;-->
+		<#--</div>-->
 
-			<!--5个格子栅格系统end-->
-		</div>
-	</div>
-</div>
+		<#--<!--内容右侧5个格子；&ndash;&gt;-->
+		<#--<div class="rightcolmd">-->
+
+			<#--<!--5个格子栅格系统end&ndash;&gt;-->
+		<#--</div>-->
+	<#--</div>-->
+<#--</div>-->
 
 <script>
 //基础图标放大缩小

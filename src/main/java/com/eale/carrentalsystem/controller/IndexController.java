@@ -2,11 +2,12 @@ package com.eale.carrentalsystem.controller;
 
 import com.eale.carrentalsystem.bean.Rolemenu;
 import com.eale.carrentalsystem.bean.User;
+import com.eale.carrentalsystem.bean.Vehicle;
 import com.eale.carrentalsystem.service.RolepowerlistService;
 import com.eale.carrentalsystem.service.SystemMenuService;
 import com.eale.carrentalsystem.service.UserService;
+import com.eale.carrentalsystem.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.convert.support.DefaultConversionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -25,6 +26,9 @@ public class IndexController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private VehicleService vehicleService;
 
     @Autowired
     private RolepowerlistService rolepowerlistService;
@@ -95,6 +99,8 @@ public class IndexController {
 
         model.addAttribute("user", user);
 
+        List<Vehicle> vehiclelist=vehicleService.findAll();
+        model.addAttribute("vehiclelist",vehiclelist);
 
         return "systemcontrol/control";
     }

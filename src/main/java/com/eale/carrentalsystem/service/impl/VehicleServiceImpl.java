@@ -40,6 +40,7 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public List<Vehicle> findByConditons(Vehicle vehicle) {
+        vehicle.setVehicleState(0);//空闲状态的车才能被找到
         Example<Vehicle> example=Example.of(vehicle);
         return vehicleDao.findAll(example);
     }
