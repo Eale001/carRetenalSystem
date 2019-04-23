@@ -117,11 +117,11 @@
                         <div class="form-group">
                             <select name="loggerStatusid" id="ctl00_cphMain_ddlStatus"
                                     class="form-control select2 ddlstatus">
-                                <option value="${order.state}">${order.state}</option>
-									<#if order.state==5> <#else>
-									<option value="5">进行中</option></#if>
-									<#if order.state==7> <#else>
-									<option value="7">已完成</option></#if>
+                                <#--<option value="${order.state}">${order.state}</option>-->
+									<#if order.state==1> <#else>
+									<option value="1">进行中</option></#if>
+									<#if order.state==2> <#else>
+									<option value="2">已完成</option></#if>
 
                             </select>
                         </div>

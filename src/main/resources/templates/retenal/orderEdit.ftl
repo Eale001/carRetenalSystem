@@ -77,16 +77,16 @@ a:hover {
                                 </div>
                         <div class="col-md-6 form-group">
                             <label class="control-label">开始日期</label>
-							<input id="starTime" name="beginTime" class="form-control"  value="${(order.beginTime)!''}"/>
+							<input id="starTime" onclick="WdatePicker()" name="beginTime" class="form-control"  value="${(order.beginTime)!''}"/>
                         </div>
                         <div class="col-md-6 form-group">
                             <label class="control-label">结束日期</label>
-							<input id="endTime" name="endTime" class="form-control" value="${(order.endTime)!''}"/>
+							<input id="endTime" onclick="WdatePicker()" name="endTime" class="form-control" value="${(order.endTime)!''}"/>
                         </div>
-                        <div class="col-md-6 form-group">
-                            <label class="control-label">订单金额</label>
-                            <input id="endTime" name="money" class="form-control" value="${(order.money)!''}"/>
-                        </div>
+                        <#--<div class="col-md-6 form-group">-->
+                            <#--<label class="control-label">订单金额</label>-->
+                            <#--<input id="endTime" name="money" class="form-control" value="${(order.money)!''}"/>-->
+                        <#--</div>-->
                         <div class="col-md-6 form-group">
                             <label class="control-label"> <span>品牌</span></label>
                             <select class="form-control" name="brandId">
@@ -108,7 +108,7 @@ a:hover {
 						<div class="col-md-6 form-group">
 							<label class="control-label">订单状态</label>
 							<select class="form-control" name="state">
-								<option value="${(order.state)!''}"></option>
+								<#--<option value="${(order.state)!''}"></option>-->
 								<#if order.state ==0>
 								<#else>
 								<option value="0">未接单</option>

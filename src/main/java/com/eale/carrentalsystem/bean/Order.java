@@ -43,6 +43,24 @@ public class Order {
     @OneToOne
     private Brand brand;//车辆品牌
 
+    @Column(name = "vehicleget_addr")
+    private String vehiclegetAddr;//取车地点
+
+    @Column(name = "vehicleback_addr")
+    private String vehiclebackAddr;//还车地点
+
+    @Column(name = "order_name")
+    private String orderName;//下单人姓名
+
+    @Column(name = "order_phone")
+    private String orderPhone;//下单手机号
+
+    @Column(name = "icard_type")
+    private String icardType;//证件类型
+
+    @Column(name = "icard")
+    private String icard;//证件号码
+
     @Column(name = "isComment")
     private Integer isComment;//评论状态
 
@@ -179,6 +197,54 @@ public class Order {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public String getVehiclegetAddr() {
+        return vehiclegetAddr;
+    }
+
+    public void setVehiclegetAddr(String vehiclegetAddr) {
+        this.vehiclegetAddr = vehiclegetAddr;
+    }
+
+    public String getVehiclebackAddr() {
+        return vehiclebackAddr;
+    }
+
+    public void setVehiclebackAddr(String vehiclebackAddr) {
+        this.vehiclebackAddr = vehiclebackAddr;
+    }
+
+    public String getOrderName() {
+        return orderName;
+    }
+
+    public void setOrderName(String orderName) {
+        this.orderName = orderName;
+    }
+
+    public String getOrderPhone() {
+        return orderPhone;
+    }
+
+    public void setOrderPhone(String orderPhone) {
+        this.orderPhone = orderPhone;
+    }
+
+    public String getIcardType() {
+        return icardType;
+    }
+
+    public void setIcardType(String icardType) {
+        this.icardType = icardType;
+    }
+
+    public String getIcard() {
+        return icard;
+    }
+
+    public void setIcard(String icard) {
+        this.icard = icard;
     }
 
     @Override
