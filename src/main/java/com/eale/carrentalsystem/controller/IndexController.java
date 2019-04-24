@@ -1,5 +1,6 @@
 package com.eale.carrentalsystem.controller;
 
+import com.eale.carrentalsystem.bean.Order;
 import com.eale.carrentalsystem.bean.Rolemenu;
 import com.eale.carrentalsystem.bean.User;
 import com.eale.carrentalsystem.bean.Vehicle;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -32,6 +35,51 @@ public class IndexController {
 
     @Autowired
     private RolepowerlistService rolepowerlistService;
+
+    @RequestMapping(value = "customerOrder",method = RequestMethod.POST)
+    public String gocustomerHome(Model model, HttpServletRequest req, Order order, @RequestParam(value = "vehicleName") String vehicleName,
+                                 @RequestParam(value = "vehiclePrice")Double vehiclePrice){
+        System.out.println(vehicleName);
+        System.out.println(vehiclePrice);
+        System.out.println(order.getVehiclegetAddr());
+        System.out.println(order.getVehiclebackAddr());
+        System.out.println(order.getBeginTime());
+        System.out.println(order.getEndTime());
+        model.addAttribute("order",order);
+        model.addAttribute("vehicleName",vehicleName);
+        model.addAttribute("vehiclePrice",vehiclePrice);
+        return "app/order";
+    }
+
+    @RequestMapping(value = "customerHome",method = RequestMethod.GET)
+    public String gocustomerHome111(Model model,HttpServletRequest req){
+
+
+        return "app/home";
+    }
+
+    @RequestMapping(value = "customerCarList",method = RequestMethod.GET)
+    public String gocustomerHome11(Model model,HttpServletRequest req){
+
+        List<Vehicle> vehicleList = vehicleService.findAll();
+        model.addAttribute(vehicleList);
+
+        return "app/carList";
+    }
+
+    @RequestMapping(value = "customerConOrder",method = RequestMethod.GET)
+    public String gocustomerHome1(Model model, @RequestParam(value = "vehicleId",required = false) Long vehicleId){
+//        System.out.println(order.getBeginTime());
+//        System.out.println(order.getEndTime());
+//        System.out.println(order.getVehiclegetAddr());
+//        System.out.println(order.getVehiclebackAddr());
+        System.out.println(vehicleId);
+        Vehicle vehicle = vehicleService.findById(vehicleId);
+        model.addAttribute("vehicel",vehicle);
+//        model.addAttribute("order",order);
+        return "app/confirmOrder";
+    }
+
 
 
     @RequestMapping("index")

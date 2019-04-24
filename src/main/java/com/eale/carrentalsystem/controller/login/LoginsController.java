@@ -174,6 +174,49 @@ public class LoginsController {
 		model.addAttribute("errormess", "该账户已存在!");
 		return "login/register";
 	}
+
+	@RequestMapping(value ="customerLogins",method = RequestMethod.POST)
+	public String customerLogin(HttpServletRequest req,HttpSession session,Model model){
+
+		User user= null;
+//		user = userService.findById((Long)session.getAttribute("userId"));
+		String servletPath = req.getServletPath();
+		System.out.println(servletPath);
+		StringBuffer requestUrl= req.getRequestURL();
+		System.out.println(requestUrl);
+//		if (null!=user){
+//			model.addAttribute("user",user);
+//			return "app/home";
+//		}
+
+		String userName=req.getParameter("userName").trim();
+		String password=req.getParameter("passWord");
+		model.addAttribute("userName", userName);
+		/*
+		 * 将用户名分开查找；用户名或者电话号码；
+		 * */
+		user = userService.findOneUser(userName,password);
+//		System.out.println(user.getIsLock());
+		if(Objects.isNull(user)){
+			model.addAttribute("errormess", "账号或密码错误!");
+			return "login/login";
+		}
+		if(user.getIsLock()==1){
+			model.addAttribute("errormess", "账号已被冻结!");
+			return "login/login";
+		}
+		Object sessionId=session.getAttribute("userId");
+		if(sessionId==user.getUserId()){
+			model.addAttribute("hasmess", "当前用户已经登录了；不能重复登录");
+			session.setAttribute("thisuser", user);
+			return "app/home";
+		}else{
+			session.setAttribute("userId", user.getUserId());
+		}
+
+
+		return "app/home";
+	}
 	
 
 }

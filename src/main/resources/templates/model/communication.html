@@ -1,0 +1,60 @@
+		<div id="cbns" style="width: 124px;height: 41px;">
+			<a class="showa" href="#"><img style="width: 124px;height: 41px;" src="../static/public/img/zixun.png" /></a>
+		</div>
+		<div class="popup">
+			<header class="consulhead">
+				<div class="log"></div><span>一诺检测</span>
+				<div class="opencl">
+					<a class="blaka" href="#"></a>
+					<a class="blaks" href="#"></a>
+				</div>
+			</header>
+    		<div class="duihua-m">
+    			<div class="out1">
+    				<div id="time1"></div>
+    				<div class="nr1">
+    					<div id="nr1_text_sc"></div>
+    					<img src="../static/public/img/user.png" style="width: 34px;height: 34px;"align="right"/>
+    					<div class="nr1_text_ajh"></div>
+    				</div>
+    			</div>
+    			<div class="out2">
+    				<div id="time2"></div>
+    				<div class="nr2">
+    					<img src="../static/public/img/jqr.png" style="width: 34px;height: 34px;"align="left" />
+    					<div class="nr2_text_ajh">
+    						<div id="nr2_text_sc"></div>
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+    		<div class="duihua-b">
+    			<div class="zxtext"></div>
+    			<div class="zxinput">
+    				&nbsp;<textarea style="resize:none;border: none; width: 308px;height: 80px;background: #F1F1F1;"></textarea>
+					<input type="button" class="btn-zx" value="发送" />
+    			</div>
+    		</div>
+  		</div>
+    <script>
+    	var time=new Date();
+    	document.getElementById("time1").innerHTML=time.toLocaleTimeString();
+    	time.setTime(time.getTime()+1000);
+    	localStorage.setItem("key1","底盘检测吗？怎么检测的？");
+    	localStorage.setItem("key2","底盘是检测的，技师会通过手机在车底部拍照的方式来进行底盘检测。");
+    	document.getElementById("time2").innerHTML=time.toLocaleDateString();
+    	document.getElementById("nr1_text_sc").innerHTML=localStorage.getItem("key1");
+    	document.getElementById("nr2_text_sc").innerHTML=localStorage.getItem("key2");
+    	$(document).ready(function(){
+    		$(".showa").click(function(){
+    			$(".popup").show();
+    			$("#cbns").hide();
+    		}),$(".blaks").click(function(){
+    			var msg="是否确定结束回话？";
+    			if(confirm(msg)==true){
+    				$(".popup").hide();
+    				$("#cbns").show();
+    			}
+    		})
+    	})
+    </script>

@@ -73,7 +73,7 @@ a:hover {
                             <th scope="col" class="co commen ">结束时间<span class="block"></span></th>
                             <th scope="col">订单金额</th>
                             <th scope="col">订单状态</th>
-                            <th scope="col" class="co commen ">车辆类型<span class="block"></span></th>
+                            <th scope="col" class="co commen ">下单电话<span class="block"></span></th>
                             <th scope="col" class="co commen ">车辆品牌<span class="block"></span></th>
                             <th>下订单人</th>
                             <th>备注</th>
@@ -89,9 +89,9 @@ a:hover {
                         <td><span>${(order.endTime)!''}</span></td>
                         <td><span>${(order.money)!''}</span></td>
                         <td><span>${(order.state)!''}</span></td>
-                        <td><span>${(order.type.typeName)!''}</span></td>
+                        <td><span>${(order.orderPhone)!''}</span></td>
                         <td><span>${(order.brand.brandName)!''}</span></td>
-                        <td><span>${(order.user.userName)!''}</span></td>
+                        <td><span>${(order.orderName)!''}</span></td>
                         <td><span>${(order.remark)!''}</span></td>
                         <td><a  href="/orderEdit?orderId=${order.orderId}"
                                 class="label xiugai"><span

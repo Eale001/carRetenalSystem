@@ -1,0 +1,175 @@
+#cbns {
+	position: fixed;
+	right: 0;
+	bottom: 85px;
+	z-index: 998;
+}
+
+.popup {
+	position: fixed;
+	right: 0;
+	bottom: 85px;
+	width: 320px;
+	height: 483px;
+	margin-left: 50px;
+	border: 1px solid #BFBFBF;
+	border-radius: 5px;
+	display: none;
+	background: white;
+	z-index: 999;
+}
+
+.consulhead{
+	position: absolute;
+	width: 320px;
+	height: 50px;
+	background: #0F6BB0;
+}
+
+.consulhead .log {
+	float: left;
+	background-color: #0F6BB0;
+	background-image: url(https://bos.nj.bpc.baidu.com/v1/nightingale/channelconfig/20170322/3acc65af-ba34-458b-bfd7-9be9e774976e.png);
+	margin: 6px 5px 0 10px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	width: 35px;
+	height: 35px;
+	background-size: 35px 35px;
+}
+
+.consulhead span {
+	font-size: 18px;
+	color: #FFFFFF;
+	display: block;
+	padding-top: 12px;
+}
+
+.opencl {
+	position: absolute;
+	margin-left: 280px;
+	float: right;
+	margin-top: -35px;
+	width: 40px;
+	height: 20px;
+}
+.blaka {
+	width: 20px;
+	height: 20px;
+	float: left;
+	background: url(../img/bglist.png) -65px -26px no-repeat;
+}
+
+.blaks {
+	float: right;
+	width: 20px;
+	height: 20px;
+	text-decoration: none;
+	background: url(../img/bglist.png) -26px -26px no-repeat;
+}
+
+
+}
+.duihua-m{
+	width: 320px;
+	height: 286px;
+}
+.duihua-b{
+	width: 320px;
+	height: 150px;
+	border-top: 1px solid #f1f1f1;
+}
+.zxtext {
+	width: 320px;
+	height: 33px;
+	background: url(../img/wbcl.png);
+}
+.zxinput {
+	width: 320px;
+	height: 116px;
+	background: #F1F1F1;
+}
+.out1 {
+	margin: 0 auto;
+	margin-top: 60px;
+	width: 308px;
+	height: 78px;
+}
+.out2 {
+	margin: 0 auto;
+	width: 308px;
+	height: 190px;
+}
+#time2 {
+	text-align: center;
+	font-size: 12px;
+	width: 308px;
+	height: 24px;
+	margin: 0 auto;
+	margin-top: 3px;
+}
+#time1 {
+	text-align: center;
+	font-size: 12px;
+	width: 308px;
+	height: 24px;
+	margin: 0 auto;
+	margin-top: 3px;
+}
+.btn-zx {
+	display: block;
+	float: right;
+	width: 60px;
+	height: 26px;
+	margin-top: -4px;
+	margin-right: 3px;
+	background-color: #0f6bb0;
+	border-radius: 9px;
+	border: none;
+	color: white;
+}
+.nr1 {
+	width: 308px;
+	height: 34px;
+}
+.nr2 {
+	width: 308px;
+	height: 74px;
+}
+#nr1_text_sc {
+	width: 183px;
+	height: 34px;
+	float: left;
+	background: #0f6bb0;
+	margin-left: 81px;
+	padding-top: 6px;
+	border-radius: 10px;
+	font-size: 15px;
+	color: white;
+	text-align: center;
+}
+.nr1_text_ajh {
+	width: 10px;
+	height: 34px;
+	background: url(../img/dhk.png) no-repeat center;
+	float: right;
+}
+#nr2_text_sc {
+	width: 206px;
+	height: 74px;
+	float: left;
+	margin-left: 5px;
+	padding-top: 6px;
+	border-radius: 10px;
+	border: 1px solid #cbcbcb;
+	font-size: 15px;
+	color: black;
+	text-align: center;
+}
+.nr2_text_ajh {
+	width: 10px;
+	height: 34px;
+	background: url(../img/bdhk.png) no-repeat center;
+	float: left;
+}

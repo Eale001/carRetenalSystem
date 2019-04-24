@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/public/css/header.css">
+    <script type="text/javascript" src="../static/public/js/jquery-2.1.0.js"></script>
+    
+</head>
+<body>
+    <header>
+        <div class="first">
+            <a href="header.html"><img src="../static/public/img/logo.png" width="127px" height="53px"></a>
+        </div>
+        <div class="last">
+            <img class="tel" src="../static/public/img/tel.png" width="155px" height="85px">
+            <div class="thelogin">
+                <img class="login" src="../static/public/img/icon_login.png" width="23px" height="27px">
+            </div>
+        </div>
+        <div class="middle">
+            <ul>
+                <li class="line1">
+                    <a href="../app/home.jsp"> 首页
+                        <div hidden="" class="underline"></div>
+                    </a>
+                </li>
+                <li class="lines">
+                    <a href="../app/appointmentyy.html">预约检测
+                        <div hidden="" class="underline"></div>
+                    </a>
+                </li>
+                <li class="lines">
+                    <a href="../app/news.html">企业动态
+                        <div hidden="" class="underline"></div>
+                    </a>
+                </li>
+                <li class="lines">
+                    <a href="../app/about-us.html">关于一诺
+                        <div hidden="" class="underline"></div>
+                    </a>
+                </li>
+            </ul>
+            <a href="#" >
+                <img class="wechat" src="../static/public/img/icon_wechat.png"width="25px" height="20px">
+                <span id="_wechat2" name="wechat" style="display: none;margin-left: 350px">
+                    <img class="code" src="../static/public/img/code.jpg" width="180px" height="180px">
+                </span>
+            </a>
+        </div>
+
+    </header>
+    <div style="height: 85px;"></div>
+</body>
+<script>
+	$(function(){
+		$(".lines").mouseover(function(){
+			$(this).children().children().stop().animate({
+				"width":"63px"	
+			}).show();
+		});
+		$(".lines").mouseout(function(){
+			$(this).children().children().stop().animate({
+				"width":"0"	
+			});
+		});
+		$(".line1").mouseover(function(){
+			$(this).children().children().stop().animate({
+				"width":"30px"	
+			}).show();
+		});
+		$(".line1").mouseout(function(){
+			$(this).children().children().stop().animate({
+				"width":"0"	
+			});
+		});
+		$(".wechat").mouseover(function(){
+			$("#_wechat2").stop().fadeIn("slow");
+			$(this).attr("src","../static/public/img/icon_wechat1.png");
+		}).mouseout(function(){
+			$("#_wechat2").stop().fadeOut("slow");
+			$(this).attr("src","../static/public/img/icon_wechat.png")
+		})
+	})
+</script>
+</html>

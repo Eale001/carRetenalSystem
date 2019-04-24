@@ -70,13 +70,14 @@ public class OrderController {
     }
 
     /**
-     * 保存,下单
+     * 管理员修改订单
      * @param order
      * @param model
      * @return
      */
     @RequestMapping(value = "saveOrder",method = RequestMethod.POST)
-    public String saveOrder(Order order,String vehicleName,String typeId,String brandId,Model model){
+    public String saveOrder(Order order,@RequestParam(value = "vehiclename",required = false)String vehicleName,
+                            @RequestParam(value = "typeId",required = false)String typeId,@RequestParam(value = "brandId",required = false)String brandId,Model model){
         System.out.println(order);
         System.out.println(vehicleName);
         System.out.println(typeId);
@@ -86,19 +87,22 @@ public class OrderController {
             return "/orderEdit";
         }
         order.setState(0);//默认为 为接单状态
-        Brand brand=brandService.findById(Long.parseLong(brandId));
-        Type type=typeService.findById(Long.parseLong(typeId));
         Vehicle vehicle=new Vehicle();
-        vehicle.setBrand(brand);
-        vehicle.setType(type);
+        if (typeId!=null && brandId!=null){
+            Brand brand=brandService.findById(Long.parseLong(brandId));
+            Type type=typeService.findById(Long.parseLong(typeId));
+            vehicle.setBrand(brand);
+            vehicle.setType(type);
+        }
+        vehicle.setVehicleName(vehicleName);
         List<Vehicle> vehicleList=vehicleService.findByConditons(vehicle);
         if (vehicleList.size()<1){
             model.addAttribute("errormess","该类型车辆没有了");
             return "/orderEdit";
         }
         order.setVehicle(vehicleList.get(0));
-        order.setBrand(brand);
-        order.setType(type);
+        order.setBrand(vehicleList.get(0).getBrand());
+        order.setType(vehicleList.get(0).getType());
         Order newOrder = orderService.save(order);
         if (null == newOrder){
             model.addAttribute("errormess","数据保存失败");
@@ -106,6 +110,49 @@ public class OrderController {
         }
         model.addAttribute("success",1);
         return "/orderManage";
+    }
+
+    /**
+     * 用户下单保存
+     * @param order
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "cusomersaveOrder",method = RequestMethod.POST)
+    public String cusomersaveOrder(Order order,@RequestParam(value = "vehiclename",required = false)String vehicleName,
+                            @RequestParam(value = "typeId",required = false)String typeId,@RequestParam(value = "brandId",required = false)String brandId,Model model){
+        System.out.println(order);
+        System.out.println(vehicleName);
+        System.out.println(typeId);
+        System.out.println(brandId);
+        if (null == order){
+            model.addAttribute("errorr","请输入有效数据");
+            return "/orderEdit";
+        }
+        order.setState(0);//默认为 为接单状态
+        Vehicle vehicle=new Vehicle();
+        if (typeId!=null && brandId!=null){
+            Brand brand=brandService.findById(Long.parseLong(brandId));
+            Type type=typeService.findById(Long.parseLong(typeId));
+            vehicle.setBrand(brand);
+            vehicle.setType(type);
+        }
+        vehicle.setVehicleName(vehicleName);
+        List<Vehicle> vehicleList=vehicleService.findByConditons(vehicle);
+        if (vehicleList.size()<1){
+            model.addAttribute("errormess","该类型车辆没有了");
+            return "/customerOrder";
+        }
+        order.setVehicle(vehicleList.get(0));
+        order.setBrand(vehicleList.get(0).getBrand());
+        order.setType(vehicleList.get(0).getType());
+        Order newOrder = orderService.save(order);
+        if (null == newOrder){
+            model.addAttribute("errormess","数据保存失败");
+            return "/customerOrder";
+        }
+        model.addAttribute("success",1);
+        return "app/home";
     }
 
     /**
