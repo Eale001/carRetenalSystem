@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
 
@@ -35,6 +36,9 @@ public class OrderController {
     @Autowired
     private CommentService commentService;
 
+    @Autowired
+    private UserService userService;
+
     /**
      * 进入订单页面
      * @param model
@@ -48,13 +52,16 @@ public class OrderController {
     }
 
     /**
-     * 进入新增,修改页面
+     * 进入新增页面
      * @param orderId
      * @param model
      * @return
      */
     @RequestMapping(value = "orderEdit",method = RequestMethod.GET)
-    public String orderEdit(@RequestParam(value = "orderId",required=false)Long orderId,Model model){
+    public String orderEdit(@RequestParam(value = "orderId",required=false)Long orderId,HttpSession session,Model model){
+        Long userId =(Long) session.getAttribute("userId");
+        User user = userService.findById(userId);
+        model.addAttribute("user",user);
         if (orderId!=null){
             Order order = orderService.findById(orderId);
             model.addAttribute("order",order);
@@ -66,6 +73,31 @@ public class OrderController {
         model.addAttribute("vehicleList",vehicleList);
         model.addAttribute("typeList",typeList);
         return "retenal/orderEdit";
+
+    }
+
+    /**
+     * 进入修改页面
+     * @param orderId
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "orderUpdate",method = RequestMethod.GET)
+    public String orderUpdate(@RequestParam(value = "orderId",required=false)Long orderId, HttpSession session,Model model){
+        Long userId =(Long) session.getAttribute("userId");
+        User user = userService.findById(userId);
+        model.addAttribute("user",user);
+        if (orderId!=null){
+            Order order = orderService.findById(orderId);
+            model.addAttribute("order",order);
+        }
+        List<Vehicle> vehicleList=vehicleService.findAll();
+        List<Brand> brandList= brandService.findAll();
+        List<Type> typeList=typeService.findAll();
+        model.addAttribute("brandList",brandList);
+        model.addAttribute("vehicleList",vehicleList);
+        model.addAttribute("typeList",typeList);
+        return "retenal/orderUpdate";
 
     }
 

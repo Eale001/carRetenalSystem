@@ -77,11 +77,11 @@ a:hover {
                                 </div>
                         <div class="col-md-6 form-group">
                             <label class="control-label">开始日期</label>
-							<input id="starTime" onclick="WdatePicker()" name="beginTime" class="form-control"  value=""/>
+							<input id="starTime" onclick="WdatePicker()" name="beginTime" class="form-control"  value="${(order.beginTime)!''}"/>
                         </div>
                         <div class="col-md-6 form-group">
                             <label class="control-label">结束日期</label>
-							<input id="endTime" onclick="WdatePicker()" name="endTime" class="form-control" value=""/>
+							<input id="endTime" onclick="WdatePicker()" name="endTime" class="form-control" value="${(order.endTime)!''}"/>
                         </div>
                         <#--<div class="col-md-6 form-group">-->
                             <#--<label class="control-label">订单金额</label>-->
@@ -108,24 +108,33 @@ a:hover {
 						<div class="col-md-6 form-group">
 							<label class="control-label">订单状态</label>
 							<select class="form-control" name="state">
+								<#--<option value="${(order.state)!''}"></option>-->
+								<#if order.state ==0>
+								<#else>
 								<option value="0">未接单</option>
+								</#if>
+								<#if order.state ==1>
+								<#else>
 								<option value="1">进行中</option>
+								</#if>
+								<#if order.state ==2>
+								<#else>
 								<option value="2">已完成</option>
-
+								</#if>
 							</select>
 						</div>
 
 						<div class="col-md-6 form-group">
 							<label class="control-label">下单用户</label>
-                            <input name="user.userName" class="form-control" value="${(user.userName)!''}" readonly/>
+                            <input name="user.userName" class="form-control" value="${(order.user.userName)!''}"/>
 						</div>
 
                         <div class="col-md-6 form-group">
                             <label class="control-label">备注</label>
-                            <input id="endTime" name="remark" class="form-control" value=""/>
+                            <input id="endTime" name="remark" class="form-control" value="${(order.remark)!''}"/>
                         </div>
 
-						<input name="taskId" type="text" style="display:none;" value="" hidden />
+						<input name="taskId" type="text" style="display:none;"value="${(order.orderId)!''}" hidden>
 					</div>
 				</div>
 			</div>

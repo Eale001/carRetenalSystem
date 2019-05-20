@@ -93,7 +93,7 @@ a:hover {
                         <td><span>${(order.brand.brandName)!''}</span></td>
                         <td><span>${(order.orderName)!''}</span></td>
                         <td><span>${(order.remark)!''}</span></td>
-                        <td><a  href="/orderEdit?orderId=${order.orderId}"
+                        <td><a  href="/orderUpdate?orderId=${order.orderId}"
                                 class="label xiugai"><span
                                 class="glyphicon glyphicon-edit"></span> 修改</a>
                             <a href="/myorder?orderId=${order.orderId}" class="label xiugai"><span
