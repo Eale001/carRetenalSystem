@@ -126,8 +126,8 @@
 				</div>
 		    <br>
        <button class="btn_login btn" type="submit" >LOGIN</button>
-            <a href="/goRegister" style="margin: 31px;font-size: 16px;">
-                <span class="glyphicon glyphicon-edit"></span> REGISTER</a>
+            <#--<a href="/goRegister" style="margin: 31px;font-size: 16px;">-->
+                <#--<span class="glyphicon glyphicon-edit"></span> REGISTER</a>-->
         </div>
         </form>
       </div>

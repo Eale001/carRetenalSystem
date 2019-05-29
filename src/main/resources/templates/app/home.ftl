@@ -25,7 +25,12 @@
 	</head>
 
 	<body>
-        <#include "../model/head.ftl">
+		<#if Session["userName"]??>
+			<#include "../model/headIndex.ftl">
+			<#else>
+			<#include "../model/head.ftl">
+		</#if>
+        <#--<#include "../model/head.ftl">-->
 		<div class="main">
 			<!-- 页面的左边区域 -->
 			<div class="main-left">

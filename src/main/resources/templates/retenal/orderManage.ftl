@@ -85,8 +85,8 @@ a:hover {
                     <tr>
                         <td><span>${(order.orderId)!''}</span></td>
                         <td><span>${(order.vehicle.vehicleName)!''}</span></td>
-                        <td><span>${(order.beginTime)!''}</span></td>
-                        <td><span>${(order.endTime)!''}</span></td>
+                        <td><span>${(order.beginTime)?string("yyyy-MM-dd HH:mm:ss")}</span></td>
+                        <td><span>${(order.endTime)?string("yyyy-MM-dd HH:mm:ss")}</span></td>
                         <td><span>${(order.money)!''}</span></td>
                         <td><span>${(order.state)!''}</span></td>
                         <td><span>${(order.orderPhone)!''}</span></td>

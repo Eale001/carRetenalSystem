@@ -115,13 +115,21 @@
                         <label> <span id="ctl00_cphMain_Label1">状态</span>
                         </label>
                         <div class="form-group">
-                            <select name="loggerStatusid" id="ctl00_cphMain_ddlStatus"
+                            <select name="state" id="ctl00_cphMain_ddlStatus"
                                     class="form-control select2 ddlstatus">
                                 <#--<option value="${order.state}">${order.state}</option>-->
-									<#if order.state==1> <#else>
-									<option value="1">进行中</option></#if>
-									<#if order.state==2> <#else>
-									<option value="2">已完成</option></#if>
+                                    <#if order.state==0>
+                                        <option value="0">未接单</option>
+                                    <#else>
+                                    </#if>
+									<#if order.state==1>
+                                        <option value="1">进行中
+                                    <#else>
+                                    </#if>
+									<#if order.state==2>
+                                        <option value="2">已完成</option>
+                                    <#else>
+                                    </#if>
 
                             </select>
                         </div>
@@ -141,15 +149,25 @@
             </div>
 
             <div class="box-footer foot">
-                <a  href="/confirmOrder?id=${order.orderId}"
-                    class="label xiugai"><span
-                        class="glyphicon glyphicon-edit"></span> 确认订单</a>
-                <a  href="/finshOrder?id=${order.orderId}"
-                    class="label xiugai"><span
-                        class="glyphicon glyphicon-edit"></span> 完成订单</a>
+                <#if order.state==0>
+                    <a  href="/confirmOrder?orderId=${order.orderId}"
+                        class="label xiugai"><span
+                            class="glyphicon glyphicon-edit"></span> 确认订单</a>
+                    <#else>
+                </#if>
+                <#if order.state == 1>
+                     <a  href="/finshOrder?orderId=${order.orderId}"
+                         class="label xiugai"><span
+                             class="glyphicon glyphicon-edit"></span> 完成订单</a>
+                    <#else >
 
-                <input class="btn btn-default" id="cancel" type="submit" value="取消"
-                       onclick="window.history.back();"/>
+                </#if>
+                <button type="button" class="bs btn btn-xs btn-default out">
+                    <a href="javascript:history.back();"> <span
+                            class="glyphicon back">取消</span></a>
+                </button>
+                <#--<input class="btn btn-default" id="cancel" type="submit" value="取消"-->
+                       <#--onclick="window.history.back();"/>-->
             </div>
 
         </form>

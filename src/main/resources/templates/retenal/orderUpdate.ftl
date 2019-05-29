@@ -74,14 +74,15 @@ a:hover {
 										<option value="${(vehicle.vehicleName)!''}">${(vehicle.vehicleName)!''}</option>
 									</#list>
                                     </select>
+									<input name="orderId" value="${(order.orderId)!''}" readonly hidden>
                                 </div>
                         <div class="col-md-6 form-group">
                             <label class="control-label">开始日期</label>
-							<input id="starTime" onclick="WdatePicker()" name="beginTime" class="form-control"  value="${(order.beginTime)!''}"/>
+							<input id="starTime" onclick="WdatePicker()" name="beginTime" class="form-control"  value="${(order.beginTime)?string("yyyy-MM-dd HH:mm:ss")}"/>
                         </div>
                         <div class="col-md-6 form-group">
                             <label class="control-label">结束日期</label>
-							<input id="endTime" onclick="WdatePicker()" name="endTime" class="form-control" value="${(order.endTime)!''}"/>
+							<input id="endTime" onclick="WdatePicker()" name="endTime" class="form-control" value="${(order.endTime)?string("yyyy-MM-dd HH:mm:ss")}"/>
                         </div>
                         <#--<div class="col-md-6 form-group">-->
                             <#--<label class="control-label">订单金额</label>-->
@@ -107,7 +108,7 @@ a:hover {
 
 						<div class="col-md-6 form-group">
 							<label class="control-label">订单状态</label>
-							<select class="form-control" name="state">
+							<select class="form-control" name="state" readonly="">
 								<#--<option value="${(order.state)!''}"></option>-->
 								<#if order.state ==0>
 								<#else>
@@ -126,7 +127,7 @@ a:hover {
 
 						<div class="col-md-6 form-group">
 							<label class="control-label">下单用户</label>
-                            <input name="user.userName" class="form-control" value="${(order.user.userName)!''}"/>
+                            <input name="userName" class="form-control" value="${(order.user.userName)!''}" readonly/>
 						</div>
 
                         <div class="col-md-6 form-group">

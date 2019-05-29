@@ -168,7 +168,7 @@ public class LoginsController {
 			role.setRoleId((long)2);
 			user.setRole(role);
 			userService.save(user);
-			return "login/login";
+			return "app/home";
 
 		}
 		model.addAttribute("errormess", "该账户已存在!");
@@ -191,7 +191,6 @@ public class LoginsController {
 
 		String userName=req.getParameter("userName").trim();
 		String password=req.getParameter("passWord");
-		model.addAttribute("userName", userName);
 		/*
 		 * 将用户名分开查找；用户名或者电话号码；
 		 * */
@@ -199,11 +198,11 @@ public class LoginsController {
 //		System.out.println(user.getIsLock());
 		if(Objects.isNull(user)){
 			model.addAttribute("errormess", "账号或密码错误!");
-			return "login/login";
+			return "app/home";
 		}
 		if(user.getIsLock()==1){
 			model.addAttribute("errormess", "账号已被冻结!");
-			return "login/login";
+			return "app/home";
 		}
 		Object sessionId=session.getAttribute("userId");
 		if(sessionId==user.getUserId()){
@@ -211,10 +210,19 @@ public class LoginsController {
 			session.setAttribute("thisuser", user);
 			return "app/home";
 		}else{
+			session.setAttribute("userName", userName);
 			session.setAttribute("userId", user.getUserId());
+			model.addAttribute("user",user);
 		}
 
 
+		return "app/home";
+	}
+
+	@RequestMapping(value = "customerLoginout",method = RequestMethod.GET)
+	public String customerLoginout(HttpSession session){
+		session.removeAttribute("userId");
+		session.removeAttribute("userName");
 		return "app/home";
 	}
 	

@@ -152,7 +152,12 @@ public class OrderController {
      */
     @RequestMapping(value = "cusomersaveOrder",method = RequestMethod.POST)
     public String cusomersaveOrder(Order order,@RequestParam(value = "vehiclename",required = false)String vehicleName,
-                            @RequestParam(value = "typeId",required = false)String typeId,@RequestParam(value = "brandId",required = false)String brandId,Model model){
+                            @RequestParam(value = "typeId",required = false)String typeId,@RequestParam(value = "brandId",required = false)String brandId
+            ,HttpSession session,Model model){
+
+        Long userId =(Long) session.getAttribute("userId");
+        User user = userService.findById(userId);
+
         System.out.println(order);
         System.out.println(vehicleName);
         System.out.println(typeId);
@@ -178,6 +183,7 @@ public class OrderController {
         order.setVehicle(vehicleList.get(0));
         order.setBrand(vehicleList.get(0).getBrand());
         order.setType(vehicleList.get(0).getType());
+        order.setUser(user);
         Order newOrder = orderService.save(order);
         if (null == newOrder){
             model.addAttribute("errormess","数据保存失败");
@@ -224,7 +230,7 @@ public class OrderController {
         order.setState(1);//将订单状态改为 派单中
 
         Order order1 = orderService.save(order);
-        model.addAttribute("order1",order1);
+        model.addAttribute("order",order1);
         return "retenal/orderShow";
     }
 
@@ -255,7 +261,7 @@ public class OrderController {
         comment.setOrder(finishorder);
         comment.setCommentState(0);//默认评价状态为 未评价
         commentService.save(comment);
-        model.addAttribute("finishorder",finishorder);
+        model.addAttribute("order",finishorder);
         return "retenal/orderShow";
     }
 

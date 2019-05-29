@@ -8,7 +8,12 @@
 		<script type="text/javascript" src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<#include "../model/head.ftl">
+    <#if Session["userName"]??>
+        <#include "../model/headIndex.ftl">
+    <#else>
+        <#include "../model/head.ftl">
+    </#if>
+		<#--<#include "../model/head.ftl">-->
 
 		<div class="main"><!-- 新闻列表部分 -->
     		<div class="newlist" style="width:1180px">

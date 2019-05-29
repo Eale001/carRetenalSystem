@@ -83,20 +83,20 @@
                         </tr>
 						<#list commentList as item>
 						<tr>
-                            <td><span>${item.order.orderId}</span></td>
-                            <td><span>${item.order.vehicle.vehicleName}</span></td>
+                            <td><span>${(item.order.orderId)!''}</span></td>
+                            <td><span>${(item.order.vehicle.vehicleName)!''}</span></td>
 							<#--<#if item.brandYeaes??>-->
 								<#--<td><span>${item.brandYeaes}</span></td>-->
                             <#--<#else>-->
 								 <#--<td><span>0</span></td>-->
                             <#--</#if>-->
-                            <td><span>${item.satisfaction}</span></td>
-                            <td><span>${item.comment}</span></td>
-                            <td><span>${item.commentState}</span></td>
+                            <td><span>${(item.satisfaction)!''}</span></td>
+                            <td><span>${(item.comment)!''}</span></td>
+                            <td><span>${(item.commentState)!''}</span></td>
                             <td>
                                 <a href="/find?commentId=${item.commentId}" class="label xiugai">
                                     <span class="glyphicon glyphicon-edit"></span> 查看</a>
-                                <a href="/find?commentId=${item.commentId}" class="label xiugai">
+                                <a href="/commentEdit?commentId=${item.commentId}" class="label xiugai">
                                     <span class="glyphicon glyphicon-edit"></span> 修改</a>
                                 <a href="/removeComment?commentId=${item.commentId}" onclick="{return confirm('删除该记录将不能恢复，确定删除吗？');};"
                                    class="label shanchu"><span

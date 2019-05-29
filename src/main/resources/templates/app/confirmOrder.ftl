@@ -11,8 +11,12 @@
 	</head>
 
 	<body>
-
-				<#include "../model/head.ftl">
+	<#if Session["userName"]??>
+		<#include "../model/headIndex.ftl">
+	<#else>
+		<#include "../model/head.ftl">
+	</#if>
+				<#--<#include "../model/head.ftl">-->
 
     <div class="main">
 

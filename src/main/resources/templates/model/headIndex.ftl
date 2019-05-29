@@ -8,11 +8,13 @@
 				<div class="p2">
 					<span id="LoginPanel">
                     <table width="100%" border="0">
-                        <tbody><tr><td width="320px">用户名：<input style="width: 100px;height: 23px;" type="text" class="loginbor" name="userName" value="${(user.userName)!''}">
-                            密码：<input style="width: 100px;height: 23px;" type="password" class="loginbor" name="passWord"></td>
+                        <tbody><tr><td width="320px">用户名：
+							<input type="text" class="loginbor" name="userName" style="width: 100px;height: 23px;" value="${(Session.userName)!''}" readonly>
+                            <#--密码：<input type="password" class="loginbor" name="passWord">-->
+						</td>
                             <td width="250px">
-								<button class="btnok" type="">登录</button>
-                                <a  class="btnreg" href="/goRegister">注册</a>&nbsp;
+								<#--<button class="btnok" type="">登录</button>-->
+                                <a  class="btnreg" href="/customerLoginout" >退出</a>&nbsp;
                                 <#--<a href="#">找回密码</a> </td></tr>-->
                         </tbody>
                     </table>

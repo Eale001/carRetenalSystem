@@ -118,8 +118,8 @@
 	          	<button type="button" class="close" data-dismiss="alert" aria-label="Close" style="right:0px;"><span aria-hidden="true">&times;</span></button>
 	          </div>
           <h2>REGISTER</h2>
-          <input type="text" placeholder="UserName/TeL" autofocus="autofocus" value="${(userTel)!''}" name="userName" class="userName test"/>
-          <input type="text" placeholder="UserName/TeL" autofocus="autofocus" value="${(userName)!''}" name="userName" class="userName test"/>
+          <input type="text" placeholder="UserName" autofocus="autofocus" value="${(userTel)!''}" name="userName" class="userName test"/>
+          <input type="text" placeholder="TeL" autofocus="autofocus" value="${(userName)!''}" name="userName" class="userName test"/>
           <input type="password" placeholder="Password" value="" name="password" class="password test"/>
            <input type="text" placeholder="Code" style="margin-bottom: 20px;width:152px" name="code" class="code test"/>
            <div class="login-img" style="display:inline-block">
