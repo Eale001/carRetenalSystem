@@ -166,7 +166,7 @@ public class OrderController {
             model.addAttribute("errorr","请输入有效数据");
             return "/orderEdit";
         }
-        order.setState(0);//默认为 为接单状态
+        order.setState(0);//默认为 未接单状态
         Vehicle vehicle=new Vehicle();
         if (typeId!=null && brandId!=null){
             Brand brand=brandService.findById(Long.parseLong(brandId));

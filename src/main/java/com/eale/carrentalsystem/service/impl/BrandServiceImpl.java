@@ -1,7 +1,6 @@
 package com.eale.carrentalsystem.service.impl;
 
 import com.eale.carrentalsystem.bean.Brand;
-import com.eale.carrentalsystem.bean.Role;
 import com.eale.carrentalsystem.dao.BrandDao;
 import com.eale.carrentalsystem.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;

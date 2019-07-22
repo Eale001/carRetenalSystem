@@ -73,7 +73,8 @@ public class BrandController {
         if (brandUpdate!=null){
 
             model.addAttribute("success",1);
-            return "/brandManage";
+            return "/brandMa." +
+                    "nage";
 
         }
         model.addAttribute("errormess","数据插入失败");
